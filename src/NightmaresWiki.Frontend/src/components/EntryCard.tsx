@@ -17,10 +17,18 @@ function routeForEntry(entry: EntrySummary) {
 export function EntryCard({ entry }: { entry: EntrySummary }) {
   return (
     <article className="entry-card">
-      {entry.image ? <img className="entry-card__image" src={resolveMediaUrl(entry.image)} alt={entry.title} /> : null}
+      {entry.image ? (
+        <div className="entry-card__media">
+          <img className="entry-card__image" src={resolveMediaUrl(entry.image)} alt={entry.title} />
+        </div>
+      ) : null}
       <div className="entry-card__body">
         <p className="entry-card__type">{entry.type}</p>
-        <h3>{entry.title}</h3>
+        <h3>
+          <Link className="entry-card__title" to={routeForEntry(entry)}>
+            {entry.title}
+          </Link>
+        </h3>
         <p>{entry.summary}</p>
         <div className="entry-card__taxonomy">
           {entry.taxonomy.map((item) => (
@@ -28,7 +36,7 @@ export function EntryCard({ entry }: { entry: EntrySummary }) {
           ))}
         </div>
         <Link className="entry-card__link" to={routeForEntry(entry)}>
-          Open article
+          Read article
         </Link>
       </div>
     </article>

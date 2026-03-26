@@ -35,5 +35,6 @@ describe("EntryDetailPage", () => {
     await waitFor(() => expect(screen.getByRole("heading", { name: "Bronze Sword" })).toBeInTheDocument());
     expect(screen.getByText("Damage")).toBeInTheDocument();
     expect(screen.getByText("Crafted by Smithsson")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Green Slime" })).toHaveAttribute("href", "/enemies/green-slime");
   });
 });

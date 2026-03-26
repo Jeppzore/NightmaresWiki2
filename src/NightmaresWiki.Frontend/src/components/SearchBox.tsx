@@ -55,7 +55,7 @@ export function SearchBox() {
         <input
           aria-label="Search entries"
           className="search__input"
-          placeholder="Search enemies, items, and NPC…"
+          placeholder="Search enemies, items, and NPC..."
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           onFocus={() => setIsOpen(results.length > 0)}

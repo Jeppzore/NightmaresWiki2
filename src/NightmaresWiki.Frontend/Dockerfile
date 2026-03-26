@@ -7,6 +7,7 @@ COPY src/NightmaresWiki.Frontend/tsconfig.app.json ./
 COPY src/NightmaresWiki.Frontend/tsconfig.node.json ./
 COPY src/NightmaresWiki.Frontend/vite.config.ts ./
 COPY src/NightmaresWiki.Frontend/index.html ./
+COPY src/NightmaresWiki.Frontend/public ./public
 COPY src/NightmaresWiki.Frontend/src ./src
 
 RUN npm install

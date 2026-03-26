@@ -50,8 +50,12 @@ export function EntryDetailPage({ fallbackType }: { fallbackType: "enemy" | "ite
               <p className="section-heading__eyebrow">{entry.type}</p>
               <h1>{entry.title}</h1>
               <p>{entry.summary}</p>
+              <div className="taxonomy-list taxonomy-list--inline">
+                {entry.taxonomy.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </div>
-            {entry.image ? <img className="article-header__image" src={resolveMediaUrl(entry.image)} alt={entry.title} /> : null}
           </header>
 
           {entry.bodySections.map((section) => (
@@ -70,18 +74,26 @@ export function EntryDetailPage({ fallbackType }: { fallbackType: "enemy" | "ite
         </section>
 
         <aside className="article-side">
-          <section className="panel">
-            <h2>Infobox</h2>
-            <div className="taxonomy-list">
-              {entry.taxonomy.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
+          <section className="panel infobox">
+            <div className="infobox__title">{entry.title}</div>
+            {entry.image ? (
+              <div className="infobox__media">
+                <img className="article-header__image" src={resolveMediaUrl(entry.image)} alt={entry.title} />
+              </div>
+            ) : null}
+            <div className="infobox__section">
+              <h2>Classification</h2>
+              <div className="taxonomy-list">
+                {entry.taxonomy.map((item) => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
             </div>
           </section>
 
           {entry.stats.length > 0 ? (
-            <section className="panel">
-              <h2>Stats</h2>
+            <section className="panel infobox infobox--stats">
+              <div className="infobox__title">Properties</div>
               <dl className="stat-list">
                 {entry.stats.map((stat) => (
                   <div key={stat.label}>

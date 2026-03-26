@@ -30,5 +30,6 @@ describe("EntryListPage", () => {
 
     await waitFor(() => expect(screen.getByText("Bronze Sword")).toBeInTheDocument());
     expect(screen.getByText("Starter weapon")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "all" })).toBeInTheDocument();
   });
 });

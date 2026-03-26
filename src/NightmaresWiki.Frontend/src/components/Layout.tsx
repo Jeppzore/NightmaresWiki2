@@ -8,46 +8,56 @@ const navigation = [
   { to: "/npcs", label: "NPC" },
 ];
 
+const headerImages = [
+  { src: "/images/header/armor.png", alt: "Armor" },
+  { src: "/images/header/weapon.png", alt: "Weapon" },
+  { src: "/images/header/bossTest.png", alt: "Boss" },
+  { src: "/images/header/redMushroom.png", alt: "Mushroom" },
+  { src: "/images/header/enemyTest.png", alt: "Enemy" },
+];
+
 export function Layout() {
   return (
-    <div className="app-shell">
-      <aside className="sidebar">
-        <div className="sidebar__brand">
-          <p className="sidebar__eyebrow">Nightmares</p>
-          <h1>Wiki</h1>
-          <p className="sidebar__copy">
-            A Tibia-inspired archive for the world, loot, and creatures of Nightmares.
+    <div className="site-shell">
+      <header className="site-header">
+        <div className="site-header__inner">
+          <div className="site-header__top">
+            <div className="site-brand">
+              <p className="site-brand__eyebrow">NightmaresWiki2</p>
+              <h1>Nightmares Wiki</h1>
+              <p className="site-brand__copy">
+                A darker field guide for the creatures, loot, and lore imported from the legacy Nightmares archive.
+              </p>
+            </div>
+            <SearchBox />
+          </div>
+
+          <div className="site-header__art" aria-label="Header artwork">
+            {headerImages.map((image) => (
+              <img key={image.src} src={image.src} alt={image.alt} />
+            ))}
+          </div>
+
+          <nav className="site-nav" aria-label="Primary">
+            {navigation.map((item) => (
+              <NavLink
+                key={item.to}
+                to={item.to}
+                end={item.end}
+                className={({ isActive }) => (isActive ? "site-nav__link site-nav__link--active" : "site-nav__link")}
+              >
+                {item.label}
+              </NavLink>
+            ))}
+          </nav>
+
+          <p className="site-header__note">
+            Inspired by TibiaWiki/Fandom page structure and the original Nightmares header icon strip.
           </p>
         </div>
+      </header>
 
-        <nav className="sidebar__nav" aria-label="Primary">
-          {navigation.map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) => (isActive ? "nav-link nav-link--active" : "nav-link")}
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </nav>
-
-        <div className="sidebar__note">
-          <h2>Source</h2>
-          <p>Imported from the legacy Nightmares wiki repository, then reshaped into a cleaner article experience.</p>
-        </div>
-      </aside>
-
-      <div className="main-frame">
-        <header className="topbar">
-          <div>
-            <p className="topbar__eyebrow">NightmaresWiki2</p>
-            <h2 className="topbar__title">Fantasy field guide</h2>
-          </div>
-          <SearchBox />
-        </header>
-
+      <div className="page-frame">
         <main className="page-content">
           <Outlet />
         </main>

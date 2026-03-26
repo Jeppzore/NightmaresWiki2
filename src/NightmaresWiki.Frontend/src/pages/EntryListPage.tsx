@@ -63,7 +63,7 @@ export function EntryListPage({ type, title }: EntryListPageProps) {
           </div>
         </div>
 
-        <div className="filter-row">
+        <div className="filter-row" aria-label={`${title} filters`}>
           {categories.map((category) => (
             <button
               key={category}
@@ -77,7 +77,7 @@ export function EntryListPage({ type, title }: EntryListPageProps) {
         </div>
       </section>
 
-      <section className="entry-grid">
+      <section className="entry-grid" aria-label={`${title} entries`}>
         {filteredEntries.map((entry) => (
           <EntryCard key={entry.slug} entry={entry} />
         ))}

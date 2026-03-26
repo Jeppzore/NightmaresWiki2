@@ -26,20 +26,29 @@ export function HomePage() {
 
   return (
     <div className="page">
-      <section className="hero">
-        <div className="hero__copy">
+      <section className="panel wiki-intro">
+        <div className="wiki-intro__copy">
           <p className="hero__eyebrow">Imported Lore & Data</p>
           <h1>{data.title}</h1>
           <p>{data.intro}</p>
+          <p className="wiki-intro__note">
+            Browse the archive much like a creature compendium: compact sprites, quick categories, and article-first pages.
+          </p>
         </div>
-        <div className="hero__sections">
+        <div className="wiki-intro__sections">
           {data.sections.map((section) => (
             <Link key={section.type} to={section.route} className="topic-tile">
-              {section.image ? <img src={resolveMediaUrl(section.image)} alt={section.title} /> : null}
-              <div>
-                <p>{section.title}</p>
-                <strong>{section.count}</strong>
-                <span>{section.description}</span>
+              {section.image ? (
+                <div className="topic-tile__media">
+                  <img src={resolveMediaUrl(section.image)} alt={section.title} />
+                </div>
+              ) : null}
+              <div className="topic-tile__body">
+                <div className="topic-tile__header">
+                  <strong>{section.title}</strong>
+                  <span>{section.count}</span>
+                </div>
+                <p>{section.description}</p>
                 {section.statusNote ? <small>{section.statusNote}</small> : null}
               </div>
             </Link>
@@ -52,6 +61,7 @@ export function HomePage() {
           <div>
             <p className="section-heading__eyebrow">Highlights</p>
             <h2>Featured articles</h2>
+            <p>Selected entries from the imported Nightmares archive.</p>
           </div>
         </div>
 
