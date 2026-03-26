@@ -416,3 +416,8 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+.dotnet/
+src/NightmaresWiki.Frontend/node_modules/
+src/NightmaresWiki.Frontend/dist/
+src/NightmaresWiki.Frontend/coverage/
+src/NightmaresWiki.Api/wwwroot/media/imported/

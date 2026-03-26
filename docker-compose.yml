@@ -1,0 +1,42 @@
+services:
+  mongo:
+    image: mongo:8.0
+    container_name: nightmareswiki2-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    build:
+      context: .
+      dockerfile: src/NightmaresWiki.Api/Dockerfile
+    container_name: nightmareswiki2-api
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      Mongo__ConnectionString: mongodb://mongo:27017
+      Mongo__DatabaseName: nightmareswiki2
+      Import__LegacyRoot: /legacy-source
+      Import__MediaOutputRelativePath: wwwroot/media/imported
+      Import__ImportOnStartup: "true"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    volumes:
+      - C:\Users\jesal\source\repos\NightmaresWiki:/legacy-source:ro
+
+  frontend:
+    build:
+      context: .
+      dockerfile: src/NightmaresWiki.Frontend/Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8080
+    container_name: nightmareswiki2-frontend
+    ports:
+      - "4173:80"
+    depends_on:
+      - api
+
+volumes:
+  mongo-data:

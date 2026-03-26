@@ -1,0 +1,357 @@
+:root {
+  color-scheme: light;
+  font-family: Georgia, "Times New Roman", serif;
+  --bg: #231a17;
+  --frame: #eadfca;
+  --panel: #f8f1e1;
+  --panel-border: #90785b;
+  --ink: #22180f;
+  --muted: #5b4a3c;
+  --accent: #855d21;
+  --accent-soft: #ccb184;
+  --danger: #7a3526;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top, rgba(220, 188, 122, 0.18), transparent 28%),
+    linear-gradient(180deg, rgba(24, 16, 14, 0.88), rgba(24, 16, 14, 0.98)),
+    #130e0c;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 290px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 28px 22px;
+  color: #f7e8d0;
+  background:
+    linear-gradient(180deg, rgba(39, 25, 18, 0.95), rgba(22, 12, 10, 0.98)),
+    #201612;
+  border-right: 1px solid rgba(247, 232, 208, 0.14);
+}
+
+.sidebar__brand h1,
+.topbar__title,
+.hero h1,
+.panel h1,
+.panel h2,
+.article-header h1 {
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+}
+
+.sidebar__eyebrow,
+.topbar__eyebrow,
+.hero__eyebrow,
+.section-heading__eyebrow,
+.entry-card__type {
+  margin: 0 0 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.74rem;
+  color: var(--accent-soft);
+}
+
+.sidebar__copy,
+.sidebar__note p,
+.hero p,
+.entry-card p,
+.panel p,
+.article-section p,
+.article-list,
+.stat-list,
+.topbar__title {
+  line-height: 1.6;
+}
+
+.sidebar__nav {
+  display: grid;
+  gap: 10px;
+  margin: 28px 0;
+}
+
+.nav-link {
+  padding: 12px 14px;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.nav-link--active {
+  background: linear-gradient(135deg, rgba(186, 138, 61, 0.34), rgba(116, 67, 25, 0.4));
+  border-color: rgba(255, 226, 178, 0.34);
+}
+
+.sidebar__note {
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.main-frame {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--frame);
+  border-bottom: 1px solid rgba(53, 40, 28, 0.18);
+}
+
+.page-content {
+  padding: 28px;
+}
+
+.page {
+  display: grid;
+  gap: 22px;
+}
+
+.hero,
+.panel,
+.entry-card {
+  border: 1px solid var(--panel-border);
+  background: linear-gradient(180deg, rgba(255, 248, 235, 0.98), rgba(240, 227, 203, 0.98));
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 22px;
+  padding: 24px;
+}
+
+.hero__sections,
+.entry-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.entry-grid {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.topic-tile {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  padding: 14px;
+  text-decoration: none;
+  background: rgba(93, 63, 31, 0.07);
+  border: 1px solid rgba(93, 63, 31, 0.18);
+}
+
+.topic-tile img,
+.entry-card__image,
+.article-header__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.topic-tile strong {
+  display: block;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+.topic-tile span,
+.topic-tile small {
+  display: block;
+}
+
+.panel {
+  padding: 22px;
+}
+
+.panel--muted {
+  background: linear-gradient(180deg, rgba(239, 229, 209, 0.95), rgba(225, 214, 194, 0.98));
+}
+
+.panel--error {
+  background: linear-gradient(180deg, rgba(253, 232, 226, 0.98), rgba(244, 214, 206, 0.98));
+  border-color: rgba(122, 53, 38, 0.45);
+}
+
+.section-heading,
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: start;
+}
+
+.filter-row,
+.taxonomy-list,
+.entry-card__taxonomy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-chip,
+.taxonomy-list span,
+.entry-card__taxonomy span {
+  border: 1px solid rgba(133, 93, 33, 0.28);
+  background: rgba(133, 93, 33, 0.08);
+  padding: 8px 12px;
+  font: inherit;
+}
+
+.filter-chip {
+  cursor: pointer;
+}
+
+.filter-chip--active {
+  background: rgba(133, 93, 33, 0.22);
+}
+
+.entry-card {
+  display: grid;
+  grid-template-rows: 160px 1fr;
+  overflow: hidden;
+}
+
+.entry-card__image {
+  padding: 18px;
+  background: radial-gradient(circle at center, rgba(133, 93, 33, 0.14), transparent 62%);
+}
+
+.entry-card__body {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.entry-card__link {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.search {
+  position: relative;
+  min-width: min(360px, 100%);
+}
+
+.search__input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(63, 44, 26, 0.25);
+  background: rgba(255, 252, 246, 0.92);
+  font: inherit;
+}
+
+.search__results {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+  z-index: 10;
+  display: grid;
+  background: var(--panel);
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+}
+
+.search__result {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 14px;
+  text-decoration: none;
+  border-top: 1px solid rgba(63, 44, 26, 0.08);
+}
+
+.article-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) 320px;
+  gap: 20px;
+}
+
+.article-main,
+.article-side {
+  display: grid;
+  gap: 20px;
+}
+
+.article-section {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(63, 44, 26, 0.12);
+}
+
+.article-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.stat-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.stat-list div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(63, 44, 26, 0.1);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+  .app-shell,
+  .hero,
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search {
+    min-width: 0;
+  }
+}
